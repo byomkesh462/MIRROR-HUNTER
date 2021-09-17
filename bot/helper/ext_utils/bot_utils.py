@@ -21,13 +21,13 @@ PAGE_NO = 1
 
 
 class MirrorStatus:
-    STATUS_UPLOADING = "🅄🄿🄻🄾🄰🄳🄸🄽🄶" # 𝗨𝗣𝗟𝗢𝗔𝗗𝗜𝗡𝗚
-    STATUS_DOWNLOADING = "🄳🄾🅆🄽🄻🄾🄰🄳🄸🄽🄶" # 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗜𝗡𝗚
-    STATUS_CLONING = "🄲🄻🄾🄽🄽🄸🄽🄶" # 𝗖𝗟𝗢𝗡𝗜𝗡𝗚
-    STATUS_WAITING = "🅀🅄🄴🅄🄴🄳" # 𝗤𝗨𝗘𝗨𝗘𝗗
-    STATUS_FAILED = "🄵🄰🄸🄻🄴🄳" # 𝗙𝗔𝗜𝗟𝗘𝗗
-    STATUS_ARCHIVING = "🄰🅁🄲🄷🄸🅅🄸🄽🄶" # 𝗔𝗥𝗖𝗛𝗜𝗩𝗜𝗡𝗚
-    STATUS_EXTRACTING = "🄴🅇🅃🅁🄰🄲🅃🄸🄽🄶" # 𝗘𝗫𝗧𝗥𝗔𝗖𝗧𝗜𝗡𝗚
+    STATUS_UPLOADING = "𝗨𝗣𝗟𝗢𝗔𝗗𝗜𝗡𝗚" # 🅄🄿🄻🄾🄰🄳🄸🄽🄶
+    STATUS_DOWNLOADING = "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗜𝗡𝗚" # 🄳🄾🅆🄽🄻🄾🄰🄳🄸🄽🄶
+    STATUS_CLONING = "𝗖𝗟𝗢𝗡𝗜𝗡𝗚" # 🄲🄻🄾🄽🄽🄸🄽🄶
+    STATUS_WAITING = "𝗤𝗨𝗘𝗨𝗘𝗗" # 🅀🅄🄴🅄🄴🄳
+    STATUS_FAILED = "𝗙𝗔𝗜𝗟𝗘𝗗" # 🄵🄰🄸🄻🄴🄳
+    STATUS_ARCHIVING = "𝗔𝗥𝗖𝗛𝗜𝗩𝗜𝗡𝗚" # 🄰🅁🄲🄷🄸🅅🄸🄽🄶
+    STATUS_EXTRACTING = "𝗘𝗫𝗧𝗥𝗔𝗖𝗧𝗜𝗡𝗚" # 🄴🅇🅃🅁🄰🄲🅃🄸🄽🄶
 
 
 PROGRESS_MAX_SIZE = 100 // 10 # Previously it was 8 instead of 10
@@ -102,12 +102,12 @@ def getAllDownload():
 
 
 def get_progress_bar_string(status):
-    completed = status.processed_bytes() / 8
-    total = status.size_raw() / 8
+    completed = status.processed_bytes() / 10 # all these 10 values was 8 previously
+    total = status.size_raw() / 10
     p = 0 if total == 0 else round(completed * 100 / total)
     p = min(max(p, 0), 100)
-    cFull = p // 8
-    cPart = p % 8 - 1
+    cFull = p // 10
+    cPart = p % 10 - 1
     p_str = FINISHED_PROGRESS_STR * cFull
     if cPart >= 0:
         # p_str += PROGRESS_INCOMPLETE[cPart]
@@ -173,7 +173,7 @@ def get_readable_message():
                             f"\n<b>⏳ ETA:</b> {download.eta()} "
                     # if hasattr(download, 'is_torrent'):
                     try:
-                        msg += f"\n<b>👥 User:</b> <b>{download.message.from_user.first_name}</b>\n<b>⚠️ Warn:</b><code>/warn {download.message.from_user.id}</code>"
+                        msg += f"\n<b>👥 User:</b> <b>{download.message.from_user.first_name}</b>\n<b>⚠️ Warn: </b><code>/warn {download.message.from_user.id}</code>"
                     except:
                         pass
                     try:
@@ -184,7 +184,7 @@ def get_readable_message():
                         msg += f" | <b>🌱:</b> {download.aria_download().num_seeders}"
                     except:
                         pass
-                    msg += f"\n<b>⛔ Cancel:</b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
+                    msg += f"\n<b>⛔ Cancel: </b><code> /{BotCommands.CancelMirror} {download.gid()}</code>"
                 msg += "\n\n"
                 if STATUS_LIMIT is not None and INDEX >= COUNT + STATUS_LIMIT:
                         break
