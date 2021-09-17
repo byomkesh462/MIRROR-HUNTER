@@ -21,16 +21,16 @@ PAGE_NO = 1
 
 
 class MirrorStatus:
-    STATUS_UPLOADING = "🅄🄿🄻🄾🄰🄳🄸🄽🄶"
-    STATUS_DOWNLOADING = "🄳🄾🅆🄽🄻🄾🄰🄳🄸🄽🄶"
-    STATUS_CLONING = "🄲🄻🄾🄽🄽🄸🄽🄶"
-    STATUS_WAITING = "🅀🅄🄴🅄🄴🄳"
-    STATUS_FAILED = "🄵🄰🄸🄻🄴🄳"
-    STATUS_ARCHIVING = "🄰🅁🄲🄷🄸🅅🄸🄽🄶"
-    STATUS_EXTRACTING = "🄴🅇🅃🅁🄰🄲🅃🄸🄽🄶"
+    STATUS_UPLOADING = "🅄🄿🄻🄾🄰🄳🄸🄽🄶" # 𝗨𝗣𝗟𝗢𝗔𝗗𝗜𝗡𝗚
+    STATUS_DOWNLOADING = "🄳🄾🅆🄽🄻🄾🄰🄳🄸🄽🄶" # 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗜𝗡𝗚
+    STATUS_CLONING = "🄲🄻🄾🄽🄽🄸🄽🄶" # 𝗖𝗟𝗢𝗡𝗜𝗡𝗚
+    STATUS_WAITING = "🅀🅄🄴🅄🄴🄳" # 𝗤𝗨𝗘𝗨𝗘𝗗
+    STATUS_FAILED = "🄵🄰🄸🄻🄴🄳" # 𝗙𝗔𝗜𝗟𝗘𝗗
+    STATUS_ARCHIVING = "🄰🅁🄲🄷🄸🅅🄸🄽🄶" # 𝗔𝗥𝗖𝗛𝗜𝗩𝗜𝗡𝗚
+    STATUS_EXTRACTING = "🄴🅇🅃🅁🄰🄲🅃🄸🄽🄶" # 𝗘𝗫𝗧𝗥𝗔𝗖𝗧𝗜𝗡𝗚
 
 
-PROGRESS_MAX_SIZE = 100 // 8
+PROGRESS_MAX_SIZE = 100 // 10 # Previously it was 8 instead of 10
 # PROGRESS_INCOMPLETE = ['▏', '▎', '▍', '▌', '▋', '▊', '▉']
 
 SIZE_UNITS = ['B', 'KB', 'MB', 'GB', 'TB', 'PB']
